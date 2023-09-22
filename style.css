@@ -11,18 +11,13 @@ body {
 #game-board {
   width: 100vmin;
   height: 100vmin;
-  background-color: aliceblue;
   display: grid;
-  grid-template-columns: repeat(21, 1fr);
-  grid-template-rows: repeat(21, 1fr);
 }
 
 .snake {
-  background-color: blue;
   border: .25vmin solid black;
 }
 
 .food {
-  background-color: burlywood;
   border: .25vmin solid black;
 }
