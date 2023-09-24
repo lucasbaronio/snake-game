@@ -1,5 +1,5 @@
 import './style.css'
-import { BOARD_SIZE, DIRECTION_TYPE, GAME_BOARD_COLOR, SNAKE_SPEED } from './constants'
+import { BOARD_SIZE_X, BOARD_SIZE_Y, DIRECTION_TYPE, GAME_BOARD_COLOR, SNAKE_SPEED } from './constants'
 import { addFoodEaten, drawSnake, getRandomAndValidPosition, initSnakeState, isValidNextDirection, moveSnakeTo } from './snake'
 import { drawFood, initFoodState, isFoodPosition, setNewFoodPosition } from './food'
 import { getRandomPosition } from './utils'
@@ -19,8 +19,8 @@ function initState () {
   initFoodState(getRandomAndValidPosition())
 
   const gameBoard = document.getElementById('game-board')
-  gameBoard.style.gridTemplateColumns = `repeat(${BOARD_SIZE}, 1fr)`
-  gameBoard.style.gridTemplateRows = `repeat(${BOARD_SIZE}, 1fr)`
+  gameBoard.style.gridTemplateColumns = `repeat(${BOARD_SIZE_X}, 1fr)`
+  gameBoard.style.gridTemplateRows = `repeat(${BOARD_SIZE_Y}, 1fr)`
   gameBoard.style.backgroundColor = GAME_BOARD_COLOR
 }
 

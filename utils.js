@@ -1,4 +1,4 @@
-import { BOARD_SIZE } from './constants'
+import { BOARD_SIZE_X, BOARD_SIZE_Y } from './constants'
 
 export function isEqualPosition (p1, p2) {
   return p1.x === p2.x && p1.y === p2.y
@@ -10,5 +10,5 @@ export function getRandomNumbersBetween (lower, upper) {
 }
 
 export function getRandomPosition () {
-  return { x: getRandomNumbersBetween(1, BOARD_SIZE), y: getRandomNumbersBetween(1, BOARD_SIZE) }
+  return { x: getRandomNumbersBetween(1, BOARD_SIZE_X), y: getRandomNumbersBetween(1, BOARD_SIZE_Y) }
 }

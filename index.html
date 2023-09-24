@@ -2,12 +2,91 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/snake_logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Snake Game</title>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
   </head>
   <body>
-    <div id="game-board"></div>
+    <div class=" absolute bottom-[50%] right-[50%] rotate-90 font-mono">
+      <svg xmlns="http://www.w3.org/2000/svg" width="864" height="784" viewBox="0 0 864 784" fill="none">
+        <g opacity="0.4" filter="url(#filter0_f_64_2566)">
+        <path d="M673.469 258.482L689.984 477.861L655.759 582.726L485.295 609.598L413.003 448.57L297.588 487.343L184.059 311.368L174 177.746L452.567 174.828L523.099 285.846L673.469 258.482Z" fill="#43D9AD"/>
+        </g>
+        <defs>
+        <filter id="filter0_f_64_2566" x="0" y="0.827728" width="863.983" height="782.77" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+        <feGaussianBlur stdDeviation="87" result="effect1_foregroundBlur_64_2566"/>
+        </filter>
+        </defs>
+      </svg>
+    </div>
+    <div class=" flex flex-col sm:flex-row items-center w-[99vmin] h-[99vmax] sm:h-[99vmin] min-w-[400px] p-8 sm:p-10 wall">
+      <div class="max-w-[380px] sm:max-w-[450px] w-full h-[64%] sm:h-[90%] md:h-[83%]">
+        <div id="game-board" class=" grid w-full h-full"></div>
+      </div>
+      <div class="flex flex-col items-baseline w-full sm:w-[80%] h-[35%] sm:h-[80%] py-4 sm:py-0 sm:pl-10">
+        <div class="flex flex-row sm:flex-col h-full w-full gap-5">
+          <div class=" w-full rounded-xl bg-slate-500/20">
+            <div class=" flex flex-col items-center justify-evenly h-full p-1 sm:p-5 gap-10">
+              <span>Use keyboard arrows to play</span>
+              <div class="flex flex-col items-center">
+                <img class=" md:h-10" src="/up-arrow.svg" />
+                <div class=" flex w-full">
+                  <img class=" md:h-10" src="/left-arrow.svg" />
+                  <img class=" md:h-10" src="/down-arrow.svg" />
+                  <img class=" md:h-10" src="/right-arrow.svg" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class=" w-full h-[30%]">
+            <div class=" flex flex-col items-center p-2 sm:p-5 gap-5 sm:gap-10">
+              <span>Food left</span>
+              <div class="flex w-full flex-wrap gap-1 sm:gap-3">
+                <div class="food w-5 h-5"></div>
+                <div class="food w-5 h-5"></div>
+                <div class="food w-5 h-5"></div>
+                <div class="food w-5 h-5"></div>
+                <div class="food w-5 h-5"></div>
+                <div class="food w-5 h-5"></div>
+                <div class="food w-5 h-5"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class=" flex justify-end w-full">
+          <button class=" border rounded-lg p-3">Skip</button>
+        </div>
+      </div>
+      <div class=" absolute top-4 left-4 h-[4vmin] w-[4vmin]">
+        <img src="/bolt.svg" />
+      </div>
+      <div class=" absolute top-4 right-4 h-[4vmin] w-[4vmin]">
+        <img src="/bolt.svg" />
+      </div>
+      <div class=" absolute bottom-4 left-4 h-[4vmin] w-[4vmin]">
+        <img src="/bolt.svg" />
+      </div>
+      <div class=" absolute bottom-4 right-4 h-[4vmin] w-[4vmin]">
+        <img src="/bolt.svg" />
+      </div>
+    </div>
+    <div class=" absolute top-[10%] left-[50%] rotate-12">
+      <svg xmlns="http://www.w3.org/2000/svg" width="868" height="831" viewBox="0 0 868 831" fill="none">
+        <g opacity="0.4" filter="url(#filter0_f_64_2565)">
+        <path d="M477.947 656.519L264.032 605.132L174.664 540.469L201.227 369.957L376.649 350.391L375.041 228.647L577.309 174.392L707.603 205.691L625.166 471.797L497.893 504.987L477.947 656.519Z" fill="#4D5BCE"/>
+        </g>
+        <defs>
+        <filter id="filter0_f_64_2565" x="0.664062" y="0.391769" width="880.938" height="830.128" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+        <feGaussianBlur stdDeviation="87" result="effect1_foregroundBlur_64_2565"/>
+        </filter>
+        </defs>
+      </svg>
+    </div>
     <script type="module" src="/main.js"></script>
   </body>
 </html>

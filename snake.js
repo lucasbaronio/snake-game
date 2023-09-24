@@ -1,4 +1,4 @@
-import { BOARD_SIZE, DIRECTION_TYPE, SNAKE_COLOR } from './constants'
+import { BOARD_SIZE_X, BOARD_SIZE_Y, DIRECTION_TYPE, SNAKE_COLOR } from './constants'
 import { getRandomPosition, isEqualPosition } from './utils'
 
 let snakeBody
@@ -28,7 +28,7 @@ function isSnakeBody (position) {
 }
 
 function isValidPosition (newPosition) {
-  return !(newPosition.x < 1 || newPosition.x > BOARD_SIZE || newPosition.y < 1 || newPosition.y > BOARD_SIZE) && !isSnakeBody(newPosition)
+  return !(newPosition.x < 1 || newPosition.x > BOARD_SIZE_X || newPosition.y < 1 || newPosition.y > BOARD_SIZE_Y) && !isSnakeBody(newPosition)
 }
 
 export function initSnakeState (position) {
