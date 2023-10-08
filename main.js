@@ -8,6 +8,8 @@ let lastRenderTime
 
 let currentDirection
 let newDirection
+let foodLeft
+let gameInPause
 
 initState()
 
@@ -15,6 +17,8 @@ function initState () {
   currentDirection = ''
   newDirection = ''
   lastRenderTime = 0
+  foodLeft = 20
+  gameInPause = false
   initSnakeState(getRandomPosition())
   initFoodState(getRandomAndValidPosition())
 
@@ -22,6 +26,9 @@ function initState () {
   gameBoard.style.gridTemplateColumns = `repeat(${BOARD_SIZE_X}, 1fr)`
   gameBoard.style.gridTemplateRows = `repeat(${BOARD_SIZE_Y}, 1fr)`
   gameBoard.style.backgroundColor = GAME_BOARD_COLOR
+
+  const banner = document.getElementById('banner')
+  banner.classList.add('hidden')
 }
 
 function main (currentTime) {
@@ -51,18 +58,25 @@ function update () {
   }
 }
 
-// TODO: check if player wins
 function moveSnakeSuccess (direction, newPosition) {
   currentDirection = direction
   if (isFoodPosition(newPosition)) {
     addFoodEaten(newPosition)
     setNewFoodPosition(getRandomAndValidPosition())
+    foodLeft--
   }
 }
 
+function finishGame (isGameOver) {
+  gameInPause = true
+  const banner = document.getElementById('banner')
+  const bannerText = banner.querySelector('span')
+  bannerText.innerText = isGameOver ? 'GAME OVER!' : 'Well DONE!'
+  banner.classList.remove('hidden')
+}
+
 function gameOver () {
-  window.alert('Game Over')
-  initState()
+  finishGame(true)
 }
 
 function draw () {
@@ -70,11 +84,31 @@ function draw () {
   gameBoard.innerHTML = ''
   drawSnake(gameBoard)
   drawFood(gameBoard)
+  drawFoodLeft()
+  if (foodLeft === 0) {
+    finishGame(false)
+  }
+}
+
+function drawFoodLeft () {
+  const foodLeftsElement = document.getElementById('food-left')
+  foodLeftsElement.innerHTML = ''
+  for (let i = 0; i < foodLeft; i++) {
+    const foodElement = document.createElement('img')
+    foodElement.src = '/food.svg'
+    // foodElement.classList.add('w-5', 'h-5')
+    foodLeftsElement.appendChild(foodElement)
+  }
 }
 
 document.addEventListener('keydown', (event) => {
+  if (gameInPause) return
   if (event.key === 'ArrowLeft') newDirection = DIRECTION_TYPE.LEFT
   if (event.key === 'ArrowRight') newDirection = DIRECTION_TYPE.RIGHT
   if (event.key === 'ArrowUp') newDirection = DIRECTION_TYPE.UP
   if (event.key === 'ArrowDown') newDirection = DIRECTION_TYPE.DOWN
 })
+
+document.getElementById('play-again-btn').onclick = function () {
+  initState()
+}

@@ -14,10 +14,11 @@ export function setNewFoodPosition (position) {
 }
 
 export function drawFood (gameBoard) {
-  const foodElement = document.createElement('div')
+  const foodElement = document.createElement('img')
+  foodElement.src = '/food.svg'
   foodElement.style.gridRowStart = foodPosition.y
   foodElement.style.gridColumnStart = foodPosition.x
-  foodElement.classList.add('food')
+  foodElement.style.margin = 'auto'
   gameBoard.append(foodElement)
 }
 
