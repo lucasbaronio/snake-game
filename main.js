@@ -37,8 +37,10 @@ function main (currentTime) {
   if (secondsSinceLastRender < 1 / SNAKE_SPEED) return
   lastRenderTime = currentTime
 
-  update()
-  draw()
+  if (!gameInPause) {
+    update()
+    draw()
+  }
 }
 
 window.requestAnimationFrame(main)
